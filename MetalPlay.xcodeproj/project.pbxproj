@@ -11,6 +11,9 @@
 		C514DD562B5A68C7001BB061 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C514DD552B5A68C7001BB061 /* ContentView.swift */; };
 		C514DD582B5A68C8001BB061 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C514DD572B5A68C8001BB061 /* Assets.xcassets */; };
 		C514DD5C2B5A68C8001BB061 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C514DD5B2B5A68C8001BB061 /* Preview Assets.xcassets */; };
+		C514DD632B5A68FB001BB061 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C514DD622B5A68FB001BB061 /* Preview.swift */; };
+		C514DD662B5A6C7E001BB061 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = C514DD652B5A6C7E001BB061 /* Shaders.metal */; };
+		C5E0A2382B5D1CD700022A87 /* Vignette.metal in Sources */ = {isa = PBXBuildFile; fileRef = C5E0A2372B5D1CD700022A87 /* Vignette.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,11 @@
 		C514DD572B5A68C8001BB061 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C514DD592B5A68C8001BB061 /* MetalPlay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MetalPlay.entitlements; sourceTree = "<group>"; };
 		C514DD5B2B5A68C8001BB061 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C514DD622B5A68FB001BB061 /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
+		C514DD642B5A6BF1001BB061 /* MyShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyShaderTypes.h; sourceTree = "<group>"; };
+		C514DD652B5A6C7E001BB061 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		C514DD692B5A73ED001BB061 /* MetalPlay-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MetalPlay-Bridging-Header.h"; sourceTree = "<group>"; };
+		C5E0A2372B5D1CD700022A87 /* Vignette.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Vignette.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +62,10 @@
 			children = (
 				C514DD532B5A68C7001BB061 /* MetalPlayApp.swift */,
 				C514DD552B5A68C7001BB061 /* ContentView.swift */,
+				C514DD622B5A68FB001BB061 /* Preview.swift */,
+				C5E0A2362B5D17FB00022A87 /* Metal */,
 				C514DD572B5A68C8001BB061 /* Assets.xcassets */,
+				C514DD692B5A73ED001BB061 /* MetalPlay-Bridging-Header.h */,
 				C514DD592B5A68C8001BB061 /* MetalPlay.entitlements */,
 				C514DD5A2B5A68C8001BB061 /* Preview Content */,
 			);
@@ -67,6 +78,16 @@
 				C514DD5B2B5A68C8001BB061 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C5E0A2362B5D17FB00022A87 /* Metal */ = {
+			isa = PBXGroup;
+			children = (
+				C514DD652B5A6C7E001BB061 /* Shaders.metal */,
+				C5E0A2372B5D1CD700022A87 /* Vignette.metal */,
+				C514DD642B5A6BF1001BB061 /* MyShaderTypes.h */,
+			);
+			path = Metal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,7 +160,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C514DD662B5A6C7E001BB061 /* Shaders.metal in Sources */,
 				C514DD562B5A68C7001BB061 /* ContentView.swift in Sources */,
+				C5E0A2382B5D1CD700022A87 /* Vignette.metal in Sources */,
+				C514DD632B5A68FB001BB061 /* Preview.swift in Sources */,
 				C514DD542B5A68C7001BB061 /* MetalPlayApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,8 +316,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pocketdream.MetalPlay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "MetalPlay/MetalPlay-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -330,8 +356,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pocketdream.MetalPlay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "MetalPlay/MetalPlay-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
