@@ -16,6 +16,21 @@ struct Preview: UIViewRepresentable {
         let device = MTLCreateSystemDefaultDevice()!
         let frame = CGRect(x: 0, y: 0, width: 400, height: 400)
         let view = MTKView(frame: frame, device: device)
+        view.preferredFramesPerSecond = 30
+        
+        
+        // Allow Core Image to render to the view using the Metal compute pipeline.
+        view.framebufferOnly = false
+        if let layer = view.layer as? CAMetalLayer {
+            // Enable EDR with a color space that supports values greater than SDR.
+            if #available(iOS 16.0, *) {
+                layer.wantsExtendedDynamicRangeContent = true
+            }
+            layer.colorspace = CGColorSpace(name: CGColorSpace.extendedLinearDisplayP3)
+            // Ensure the render view supports pixel values in EDR.
+            view.colorPixelFormat = MTLPixelFormat.rgba16Float
+        }
+        
         
         guard let drawable = view.currentDrawable else {
             fatalError("LLL")
@@ -97,5 +112,6 @@ struct Preview: UIViewRepresentable {
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
         // Do nothing
+        print("updating")
     }
 }
